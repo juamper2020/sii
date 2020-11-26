@@ -1,0 +1,38 @@
+extends layout
+block contenido
+    div.container
+        div.row
+            div.col-sm-10.offset-sm-1    
+                br
+                h2 Ver productos
+                if mensaje
+                    div.alert.alert-success
+                        =mensaje
+                br
+                table.table
+                    thead.thead-dark
+                        tr
+                            th #
+                            th Código
+                            th Nombre
+                            th Categoría
+                            th Fecha de registro
+                            th Acciones
+                    tbody
+                        if(listaProductos)
+                            - contador=0
+                            each producto in listaProductos
+                                - contador=contador+1
+                                tr 
+                                    td=contador
+                                    td=producto.proCodigo
+                                    td=producto.proNombre
+                                    td=producto.categorium.catDescripcion
+                                    td=producto.proFechaRegistro
+                                    td 
+                                       div.btn-group
+                                            a.btn.btn-info(href=`/verProducto/${producto.idProducto}`) Ver
+                                            a.btn.btn-success(href=`/editarProducto/${producto.idProducto}`) Editar
+                                            a.btn.btn-danger.eliminar-producto(data-producto-url=producto.url) Eliminar         
+                                           
+

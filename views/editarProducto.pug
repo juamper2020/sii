@@ -1,0 +1,22 @@
+extends layout
+block contenido
+    div.container
+        div.row
+        div.col-sm-8.offset-sm-2
+            br
+            h2 Editar Producto
+            if mensaje
+                div.alert.alert-success
+                    =mensaje
+            if errores
+                div.alert.alert-danger
+                    each error in errores
+                        =error.texto
+                        br
+            br
+        include formProducto
+            div.btn-group
+                a.btn.btn-primary(href="/verProductos") < Volver
+                button.btn.btn-success(type="submit") Actualizar
+
+

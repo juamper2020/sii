@@ -1,0 +1,38 @@
+extends layout
+block contenido
+    div.container
+        div.row
+        div.col-sm-8.offset-sm-2
+            br
+            h2 Registrar entrada
+            if mensaje
+                div.alert.alert-success
+                    =mensaje
+            if errores
+                div.alert.alert-danger
+                    each error in errores
+                        =error.texto
+                        br
+            br
+        div.row
+            div.col-sm-8.offset-sm-2
+                form(action="/insertarEntrada" method="POST")
+                    input.form-control(name="idProducto" readonly value=`${datosProducto.idProducto}`)
+                    div.form-group
+                        label.form-label(for="txtCodigo") Código:
+                        input.form-control(name="txtCodigo" readonly value=`${datosProducto.proCodigo}`)
+                    div.form-group
+                        label.form-label(for="txtNombre") Nombre
+                        input.form-control(name="txtNombre" readonly value=`${datosProducto.proNombre}`)
+                    div.form-group
+                        label.form-label(for="txtCantidadActual") Cantidad actual:
+                        input.form-control(name="txtCantidadActual" readonly value=`${datosProducto.proCantidadActual}`)
+                    div.form-group
+                        label.form-label(for="txtCantidadEntra") Cantidad que entra:
+                        input.form-control(name="txtCantidadEntra" type="number")  
+                    div.btn-group
+                        a.btn.btn-primary(href="/verMovimientoInventario") < Volver
+                        button.btn.btn-success(type="submit") Registrar           
+            
+
+

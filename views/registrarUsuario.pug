@@ -1,0 +1,20 @@
+extends layout
+block contenido
+    div.container
+        div.row
+        div.col-sm-8.offset-sm-2
+            br
+            h2 Registrar Usuario
+            if mensaje
+                div.alert.alert-success
+                    =mensaje
+            if errores
+                div.alert.alert-danger
+                    each error in errores
+                        =error.message
+                        br
+            br
+        include formUsuario
+            button.btn.btn-success(type="submit") Registrar
+
+

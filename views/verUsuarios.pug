@@ -1,0 +1,36 @@
+extends layout
+block contenido
+    div.container
+        div.row
+            div.col-sm-10.offset-sm-1    
+                br
+                h2 Ver usuarios
+                if mensaje
+                    div.alert.alert-success
+                        =mensaje
+                br
+                table.table
+                    thead.thead-dark
+                        tr
+                            th #
+                            th Nombre completo
+                            th Correo electrónico
+                            th Fecha de registro
+                            th Acciones
+                    tbody
+                        if(listaUsuarios)
+                            - contador=0
+                            each usuario in listaUsuarios
+                                - contador=contador+1
+                                tr 
+                                    td=contador
+                                    td=usuario.usuNombre
+                                    td=usuario.usuCorreoElectronico
+                                    td=usuario.usuFechaRegistro
+                                    td 
+                                       div.btn-group
+                                            a.btn.btn-info(href="") Ver
+                                            a.btn.btn-success(href="") Editar
+                                            a.btn.btn-danger.eliminar-usuario(href="") Eliminar         
+                                           
+

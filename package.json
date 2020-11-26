@@ -1,0 +1,43 @@
+{
+  "name": "sii",
+  "version": "1.0.0",
+  "description": "Sistema de información para inventario de productos",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "watch": "webpack --w --mode development",
+    "start": "concurrently \"npm run dev \" \"npm run watch\""
+  },
+  "author": "Juan Diego Ninco Collazos",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.19.0",
+    "clean": "^4.0.2",
+    "concurrently": "^5.3.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "core-util-is": "^1.0.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "heroku": "^7.47.3",
+    "mysql2": "^2.1.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pug": "^3.0.0",
+    "sequelize": "^6.3.5",
+    "shortid": "^2.2.15",
+    "slug": "^3.3.4",
+    "sweetalert2": "^10.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "nodemon": "^2.0.4",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
+  }
+}

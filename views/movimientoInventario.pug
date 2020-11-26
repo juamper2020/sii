@@ -1,0 +1,100 @@
+extends layout
+block contenido
+    div.container
+        div.row
+            div.col-sm-10.offset-sm-1
+                br
+                br
+                h2 Movimiento inventario
+                br
+                form(action="/")
+                    div.row
+                        div.col-md-4
+                            label Filtro
+                            select.form-control(type="text" id="selCategoria" required)
+                                option(value="") --seleccionar--
+                                option(value="codigo") Código
+                                option(value="nombre") Nombre
+                                option(value="categoria") Categoría
+                        div.col-md-4
+                            label Dato
+                            input.form-control(type="text" id="selCategoria" required)
+                        div.col-md-4
+                            button.btn.btn-success(type="submit" style="margin-top:30px") Buscar 
+                br
+                div.btn-group
+                    button.btn.btn-secondary(type="button" data-toggle="modal" data-target="#modalMovimientos") Ver movimientos
+                    button.btn.btn-secondary(type="button" onclick="javascript:window.print();") Exportar registros
+                br
+                br
+                table.table
+                    thead.thead-dark
+                        tr
+                            th #
+                            th Código
+                            th Nombre
+                            th Categoría
+                            th Stock mínimo
+                            th Stock máximo
+                            th Cantidad actual
+                            th Acciones         
+                    tbody
+                        if(listaProductos)
+                                - contador=0
+                                each producto in listaProductos
+                                    - contador=contador+1
+                                    tr 
+                                        td=contador
+                                        td=producto.proCodigo
+                                        td=producto.proNombre
+                                        td=producto.categorium.catDescripcion
+                                        td=producto.proStockMinimo
+                                        td=producto.proStockMaximo
+                                        td=producto.proCantidadActual
+                                        td 
+                                            div.btn-group
+                                                    a.btn.btn-info(href=`/verEntrada/${producto.idProducto}`) Registrar entrada
+                                                    a.btn.btn-warning(href=`/verSalida/${producto.idProducto}`) Registrar salida
+                                                
+    div.modal.fade(id="modalMovimientos")
+        div.modal-dialog.modal-lg
+            div.modal-content
+                div.modal-header
+                    h5 Historial de movimientos
+                div.modal-body
+                    table.table
+                        thead.thead-dark
+                            tr
+                                th #
+                                th Código
+                                th Nombre
+                                th Cantidad actual
+                                th Cantidad entrada
+                                th Cantidad salida
+                                th Fecha registro
+                        tbody
+                            if(listaMovimientos)
+                                - contador=0
+                                each movimiento in listaMovimientos
+                                    - contador=contador+1
+                                    tr 
+                                        td=contador
+                                        td=movimiento.proCodigo
+                                        td=movimiento.proNombre
+                                        td=movimiento.movCantidad
+                                        td=movimiento.movEntrada
+                                        td=movimiento.movSalida
+                                        td=movimiento.movFechaRegistro
+                div.modal-footer
+                    button.btn.btn-secondary(data-dismiss="modal") Cerrar
+                    button.btn.btn-primary Imprimir
+    script.
+        $('#modalEntrada').on('show.bs.modal', function (event) {
+           $(this).modal('show');
+        })
+        $('#modalSalida').on('show.bs.modal', function (event) {
+           $(this).modal('show');
+        })
+        $('#modalMovimientos').on('show.bs.modal', function (event) {
+           $(this).modal('show');
+        })

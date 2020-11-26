@@ -1,0 +1,38 @@
+extends layout
+block contenido
+    div.container
+        br
+        table.table.table-bordered
+            tr 
+                th Código:
+                td=verProducto.proCodigo
+
+            tr
+                th Nombre:
+                td=verProducto.proNombre
+            tr
+                th Categoría:
+                td=verProducto.categorium.catDescripcion
+            tr
+                th Tipo venta:
+                td=verProducto.tipo_ventum.tvDescripcion
+            tr
+                th Precio compra:
+                td=verProducto.proPrecioCompra
+            tr
+                th Precio venta:
+                td=verProducto.proPrecioVenta
+            tr
+                th Cantidad actual:
+                td=verProducto.proCantidadActual
+            tr
+                th Stock mínimo:
+                td=verProducto.proStockMinimo
+            tr
+                th Stock máximo:
+                td=verProducto.proStockMaximo
+            tr
+                th Descripción:
+                td
+                    pre=verProducto.proDescripcion
+        a.btn.btn-primary(href="/verProductos") < Volver

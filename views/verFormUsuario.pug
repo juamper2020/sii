@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title SII - Registro de usuario
+        link(rel="stylesheet", href="/css/bootstrap.min.css")
+    body
+        br
+        div.row
+            div.col-sm-6.offset-sm-3
+                center
+                    h1(align="center" style="color:red") SII
+                br
+                div.card
+                    div.card-header Registro de usuario
+                    div.card-body
+                        if mensaje
+                            div.alert.alert-success
+                                =mensaje
+                        if errores
+                            div.alert.alert-danger
+                                each error in errores
+                                    =error.message
+                                    br
+                        br
+                        form(action="/insertarUsuario" method="POST")
+                            div.form-row
+                                div.form-group.col-md-6
+                                    label Nombre completo
+                                    input.form-control(type="text" name="txtNombre")
+                                div.form-group.col-md-6
+                                    label Correo electrónico
+                                    input.form-control(type="email" name="txtCorreoElectronico")
+                                div.form-group.col-md-6
+                                    label Contraseña
+                                    input.form-control(type="password" name="txtContrasenia")
+                                div.form-group.col-md-6
+                                    label Confirmar contraseña
+                                    input.form-control(type="password" name="txtContrasenia2")
+                                div.form-group.col-md-12 
+                                    div.btn-group
+                                        a.btn.btn-primary(href="/") < Volver al inicio de sesión
+                                        button.btn.btn-success(type="submit") Registrarme

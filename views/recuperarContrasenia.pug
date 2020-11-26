@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title SII - Recuperar contraseña
+        link(rel="stylesheet", href="/css/bootstrap.min.css")
+    body
+        br
+        div.row
+            div.col-sm-4.offset-sm-4
+                center
+                    h1(align="center" style="color:red") SII
+                br
+                div.card
+                    div.card-header Recuperar contraseña
+                    div.card-body
+                        if mensaje
+                            div.alert.alert-success
+                                =mensaje
+                        if errores
+                            div.alert.alert-danger
+                                each error in errores
+                                    =error.message
+                                    br
+                        br
+                        form(action="/recuperarContrasenia" method="POST")
+                            div.form-row
+                                p Ingrese su correo electrónico para recibir las instrucciones:
+                                div.form-group.col-md-12
+                                    input.form-control(type="email" name="txtCorreoElectronico" placeholder="Digite el correo electrónico")
+                                div.form-group.col-md-12 
+                                    div.btn-group
+                                        a.btn.btn-primary(href="/") < Volver al inicio de sesión
+                                        button.btn.btn-success(type="submit") Recuperar

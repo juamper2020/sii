@@ -1,0 +1,57 @@
+div.row
+    div.col-sm-8.offset-sm-2
+        form(action=`${productoEditar ? '/actualizarProducto/'+productoEditar.idProducto : '/insertarProducto'}` method="POST")
+            div.form-row
+                div.form-group.col-md-4
+                    label Código
+                    input.form-control(type="text" name="txtCodigo" value=`${productoEditar ? productoEditar.proCodigo : ''}`)
+                div.form-group.col-md-4
+                    label Nombre
+                    input.form-control(type="text" name="txtNombre" value=`${productoEditar ? productoEditar.proNombre : ''}`)
+                div.form-group.col-md-4
+                    label Categoría
+                    select.form-control(type="text" name="selCategoria" id="selCategoria")
+                        option(value="") --seleccione--
+                        each categoria in listaCategoria
+                            option(value=`${categoria.idCategoria}`)= categoria.catDescripcion
+                div.form-group.col-md-4
+                    label Tipo venta
+                    select.form-control(name="selTipoVenta" id="selTipoVenta")
+                        option(value="") --seleccione--
+                        each tipoVenta in listaTipoVenta
+                            option(value=`${tipoVenta.idTipoVenta}`)= tipoVenta.tvDescripcion
+                div.form-group.col-md-4
+                    label Precio compra
+                    input.form-control(type="number" name="txtPrecioCompra" value=`${productoEditar ? productoEditar.proPrecioCompra : ''}`)
+                div.form-group.col-md-4
+                    label Precio venta
+                    input.form-control(type="number" name="txtPrecioVenta" value=`${productoEditar ? productoEditar.proPrecioVenta : ''}`)
+                div.form-group.col-md-4
+                    label Cantidad actual
+                    input.form-control(type="number" name="txtCantidadActual" value=`${productoEditar ? productoEditar.proCantidadActual : ''}`)
+                div.form-group.col-md-4
+                    label Stock mínimo
+                    input.form-control(type="number" name="txtStockMinimo" value=`${productoEditar ? productoEditar.proStockMinimo : ''}`)
+                div.form-group.col-md-4
+                    label Stock máximo
+                    input.form-control(type="number" name="txtStockMaximo" value=`${productoEditar ? productoEditar.proStockMaximo : ''}`)
+                div.form-group.col-md-12
+                    label Descripción
+                    textarea.form-control(name="txtDescripcion")= productoEditar ? productoEditar.proDescripcion : ''
+                div.form-group.col-md-12 
+                block boton
+if(productoEditar)
+    script.
+        var pOptions1 = document.getElementById('selCategoria').options;
+        for (i=0; i < pOptions1.length; i++) {
+            if (pOptions1[i].value == #{productoEditar.categoriumIdCategoria}){
+                pOptions1[i].selected = true;
+            }
+        }
+        
+        var pOptions2 = document.getElementById('selTipoVenta').options;
+        for (i=0; i < pOptions2.length; i++) {
+            if (pOptions2[i].value == #{productoEditar.tipoVentumIdTipoVenta}){
+                pOptions2[i].selected = true;
+            }
+        }
